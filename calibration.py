@@ -276,7 +276,8 @@ def calibrate(file,
 def full_plot(data,
               peak_nb:int=1,
               peak_height:float=1000,
-              peak_width:float=10):
+              peak_width:float=10,
+              do_compton:bool=True):
     
     fig, ax = plt.subplots()
     
@@ -297,6 +298,8 @@ def full_plot(data,
         label = f"Gamma peak ({i+1}) at {gamma_peak:.0f} keV" if len(gamma_peaks) > 1 else f"Gamma peak at {gamma_peak:.0f} keV"
         ax.axvline(gamma_peak, color="red", alpha=0.8, label=label)
         
+        if not do_compton:
+            continue
         # Compton range
         label = f"Compton range ({i+1}) to {compton_edge(gamma_peak):.0f} keV" if len(gamma_peaks) > 1 else f"Compton range to {compton_edge(gamma_peak):.0f} keV"
         ax.axvspan(0, compton_edge(gamma_peak), ymin=-1, ymax=0.4+i/10, alpha=0.2, color="gray", label=label, capstyle="round")
