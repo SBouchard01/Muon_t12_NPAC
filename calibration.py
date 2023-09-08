@@ -294,13 +294,16 @@ def full_plot(data,
     gamma_peaks = peaks[-peak_nb:]
     for i, gamma_peak in enumerate(gamma_peaks):
         # Gamma peaks
-        ax.axvline(gamma_peak, color="red", alpha=0.8, label=f"Gamma peak {i+1}")
+        label = f"Gamma peak ({i+1}) at {gamma_peak:.0f} keV" if len(gamma_peaks) > 1 else f"Gamma peak at {gamma_peak:.0f} keV"
+        ax.axvline(gamma_peak, color="red", alpha=0.8, label=label)
         
         # Compton range
-        ax.axvspan(0, compton_edge(gamma_peak), ymin=-1, ymax=0.4+i/10, alpha=0.2, color="gray", label=f"Compton range {i+1}", capstyle="round")
+        label = f"Compton range ({i+1}) to {compton_edge(gamma_peak):.0f} keV" if len(gamma_peaks) > 1 else f"Compton range to {compton_edge(gamma_peak):.0f} keV"
+        ax.axvspan(0, compton_edge(gamma_peak), ymin=-1, ymax=0.4+i/10, alpha=0.2, color="gray", label=label, capstyle="round")
 
         # Compton peak
-        ax.axvline(compton_peak(gamma_peak), color="gray", alpha=0.3, label=f"Compton peak {i+1}")
+        label = f"Compton peak ({i+1}) at {compton_peak(gamma_peak):.0f} keV" if len(gamma_peaks) > 1 else f"Compton peak at {compton_peak(gamma_peak):.0f} keV"
+        ax.axvline(compton_peak(gamma_peak), color="gray", alpha=0.3, label=label)
 
     ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
     ax.set_xlabel("Energy (keV)")
