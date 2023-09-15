@@ -112,7 +112,7 @@ def get_gamma_peaks(data,
     sol = {}
     
     for i, pe_peak in enumerate(pe_peaks, start=1):
-        pe_value = data[data[:, 0] == pe_peak, 1][0]
+        pe_value = data[data[:, 0] == pe_peak, 1][0] # Get the y value on the spectrum
 
         # Fit the gaussian around the peak
         popt, pcov = curve_fit(gauss, data[:, 0], data[:, 1], p0=[1, pe_peak, pe_value], bounds=([0, 0, 0], [np.inf, np.inf, np.inf]))
