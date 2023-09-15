@@ -65,6 +65,7 @@ def calibrate_TAC(file:str = "data/TAC_calibration_spectrum-15-09-2023.txt",
     
     # Plots
     fig, ax = plt.subplots(2, 1, figsize=(10, 10), sharex=True)
+    fig.set_facecolor("white") # Set the background color to white bc jupyter is annoying and makes a transparent background
     
     i = 0
     if plot_peaks:
