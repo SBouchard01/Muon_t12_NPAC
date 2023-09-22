@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter, find_peaks
 from scipy.optimize import curve_fit
-from calibration import linear, r_squared
+from spectroscopy.calibration import linear, r_squared
 
 
 def calibrate_TAC(file:str = "data/TAC_calibration_spectrum-15-09-2023.txt",
@@ -93,5 +93,3 @@ def calibrate_TAC(file:str = "data/TAC_calibration_spectrum-15-09-2023.txt",
         return popt
     
     return popt, (fig, ax)
-
-    
