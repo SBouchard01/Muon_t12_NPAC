@@ -50,7 +50,7 @@ def x_cut_plot(Object:muon_lifetime,
     ax.axvline(afterpulse_value, ls='--', color='r', label='Afterpulse peak (estimated)')
     ax.set_xlabel('x-cut value (µs)')
     ax.set_ylabel('$\chi^2$')
-    ax.set_title(f'$\chi^2$ as a function of the x-cut value')
+    ax.set_title(f'$\chi^2$ as a function of the x-cut value \n(bins = {bin_nb})')
     ax.legend()
     fig.set_facecolor('white')
     
@@ -93,7 +93,7 @@ def bin_plot(Object:muon_lifetime,
     ax.axhline(1, ls='--', c='r', label='Expected $\chi_2$')
     ax.set_xlabel('bin number')
     ax.set_ylabel('$\chi^2$')
-    ax.set_title(f'$\chi^2$ as a function of the bin number')
+    ax.set_title(f'$\chi^2$ as a function of the bin number \n(x-cut = {x_cut} µs)')
     ax.legend()
     fig.set_facecolor('white')
     
