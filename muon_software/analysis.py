@@ -41,7 +41,7 @@ class muon_lifetime():
         self.error = error
         
         # Internal parameters
-        expected_flux = 13 # Expected rate of muons per second in the detector
+        self.expected_flux = 13 # Expected rate of muons per second in the detector
         
         # Convert times in µs
         if time_unit == "s":
@@ -90,7 +90,7 @@ class muon_lifetime():
                 Counts.append(n/acq_time)
             
             # Get the x value where the counts is 90% of the max
-            threshold_ids = np.where(np.array(Counts) > 13*0.9)[0]
+            threshold_ids = np.where(np.array(Counts) > self.expected_flux*0.9)[0]
             threshold_id = threshold_ids[-1] if len(threshold_ids) > 0 else 0 # Make sure the threshold is not empty
             threshold = adc_range[threshold_id]
             # print(f"Threshold : {threshold}, {adc_range[threshold]} ADC")
@@ -196,7 +196,7 @@ class muon_lifetime():
         self.yerr = self.yerr[mask]
 
         if method == 'scipy':
-            self.popt, self.pcov = curve_fit(exp, self.x, self.y, p0=[1, 5])
+            self.popt, self.pcov = curve_fit(exp, self.x, self.y, p0=p0)
             self.perr = np.sqrt(np.diag(self.pcov))
             
             # self.chi2 = r_squared(self.y, exp(self.x, *self.popt)) # I cheat here, because I can't estimate the errors on the fit parameters (So i do a worst case estimate)
@@ -206,7 +206,7 @@ class muon_lifetime():
         elif method == 'iminuit':           
             least_squares = LeastSquares(self.x, self.y, self.yerr, exp)
             
-            m = Minuit(least_squares, amplitude=1, tau=5) # Initailize the minimizer
+            m = Minuit(least_squares, amplitude=p0[0], tau=p0[1]) # Initailize the minimizer
             
             m.migrad()  # Finds minimum of least_squares function
             m.hesse()   # Accurately computes uncertainties
