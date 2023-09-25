@@ -44,7 +44,7 @@ def x_cut_plot(Object:muon_lifetime,
     ax.axhline(1, ls='--', color='r', label='Expected $\chi_2$')
     ax.set_xlabel('x-cut value (µs)')
     ax.set_ylabel('$\chi^2$')
-    ax.set_title(f'$\chi^2$ as a function of the x-cut value \n(bins = {bins}))')
+    ax.set_title(f'$\chi^2$ as a function of the x-cut value \n(bins = {bins})')
     ax.legend()
     fig.set_facecolor('white')
     
