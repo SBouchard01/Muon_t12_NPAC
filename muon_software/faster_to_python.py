@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def faster_formatting(file, return_values:bool=False):
+def faster_formatting(file:str, return_values:bool=False):
     """
     Takes a Faster file and returns the times in ns 
     (with the intrinsic Faster delay)
