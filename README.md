@@ -6,7 +6,7 @@ It was created by Simon BOUCHARD and Pierre MASSON.
 ## Contents of the repository
 
 ### The *spectroscopy* folder
-This folder contains the preliminary TL work on gamma spectroscopy. The `calibration.py` file contains some useful functions to calibrate the gamma spectrum. 
+This folder contains the preliminary TL work on gamma spectroscopy. The `calibration.py` file contains some useful functions to calibrate the gamma spectrum. The `spectrum` folder contains the data used in the `Gamma_spectro.ipynb` notebook.
 
 ### `muon_software`
 This folder contains the code for the digital muon lifetime analysis. It is designed as a self-contained class in the `analysis.py` file, but uses functions from the other files of the folder.
