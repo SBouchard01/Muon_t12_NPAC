@@ -254,7 +254,7 @@ class muon_lifetime():
         
         ax.text(0.5, 0.7, f'$\\tau$ = {self.popt[1]:.2f}±{self.perr[1]:.2f} µs', transform=ax.transAxes)
         
-        ax.plot(self.x, exp(self.x, *self.popt), 'r-', label=f'$\\chi^{{2}}_{{{self.method}}}$ = {self.chi2:.2f} \n{np.sum(self.y)} evts')
+        ax.plot(self.x, exp(self.x, *self.popt), 'r-', label=f'$\\tilde{{\chi}}^{{2}}_{{{self.method}}}$ = {self.chi2:.2f} \n{np.sum(self.y)} evts')
 
         ax.set_xlabel('Time (µs)')
         ax.set_ylabel('Counts')
